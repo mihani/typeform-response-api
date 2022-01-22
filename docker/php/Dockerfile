@@ -1,8 +1,8 @@
-FROM php:7.4.11-fpm-alpine
+FROM php:8.1-fpm-alpine
 
 ARG APCU_VERSION=5.1.19
 ARG XDEBUG_VERSION=3.1.5
-ARG COMPOSER_VERSION=2.0.8
+ARG COMPOSER_VERSION=2.2.5
 
 RUN apk add --update --no-cache \
         bash \
@@ -18,9 +18,9 @@ RUN apk add --update --no-cache \
     apk add --update --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
         icu-dev && \
-    pecl install apcu-${APCU_VERSION} xdebug-${XDEBUG_VERSION} && \
+    pecl install xdebug-${XDEBUG_VERSION} && \
     docker-php-ext-install intl zip mysqli pdo_mysql && \
-    docker-php-ext-enable opcache apcu xdebug && \
+    docker-php-ext-enable opcache xdebug && \
     apk del .build-deps && \
     addgroup bar && \
     adduser -D -h /home -s /bin/bash -G bar foo
