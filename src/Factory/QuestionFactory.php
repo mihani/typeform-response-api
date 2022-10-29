@@ -18,13 +18,18 @@ class QuestionFactory
 
     public static function create(DefinitionFieldDto $definitionFieldDto, Form $form): Question
     {
+        $formatedAnwserRole = null;
+        if (isset(self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$definitionFieldDto->id])){
+            $formatedAnwserRole = self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$definitionFieldDto->id];
+        }
+
         $question = (new Question())
             ->setLabel($definitionFieldDto->title)
             ->setForm($form)
             ->setType($definitionFieldDto->type)
             ->setTypeformId($definitionFieldDto->id)
             ->setTypeformRef($definitionFieldDto->ref)
-            ->setFormatedAnswerRole(self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$definitionFieldDto->id])
+            ->setFormatedAnswerRole($formatedAnwserRole)
         ;
 
         if (Question::MULTIPLE_CHOICE_TYPE === $definitionFieldDto->type) {
@@ -41,7 +46,12 @@ class QuestionFactory
 
     public static function updateFormatedAnwserRole(Question $question): Question
     {
-        $question->setFormatedAnswerRole(self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$question->getTypeformId()]);
+        $formatedAnwserRole = null;
+        if (isset(self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$question->getTypeformId()])){
+            $formatedAnwserRole = self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$question->getTypeformId()];
+        }
+
+        $question->setFormatedAnswerRole($formatedAnwserRole);
 
         return $question;
     }
