@@ -13,7 +13,7 @@ class QuestionFactoryTest extends TestCase
 {
     public function testCreateSimpleQuestionSuccess(): void
     {
-        $definitionFieldDto = new DefinitionFieldDto('fieldId', 'Quel est votre nom complet ?', 'short_text', '62887e4e6983de5a');
+        $definitionFieldDto = new DefinitionFieldDto('JDk1FY0zCI4o', 'Quel est votre nom complet ?', 'short_text', '62887e4e6983de5a');
 
         $form = new Form();
 
@@ -42,7 +42,7 @@ class QuestionFactoryTest extends TestCase
             ],
         ];
 
-        $definitionFieldDto = new DefinitionFieldDto('fieldId', "Comment m'avez vous trouvé ?", 'multiple_choice', 'e43cf3f75acfbd8d', true, $choices);
+        $definitionFieldDto = new DefinitionFieldDto('qA8u4ITWsLTG', "Comment m'avez vous trouvé ?", 'multiple_choice', 'e43cf3f75acfbd8d', true, $choices);
 
         $form = new Form();
 
