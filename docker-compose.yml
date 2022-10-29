@@ -16,8 +16,8 @@ services:
 
   php:
     build: ./docker/php
-    env_file: docker.env
     container_name: typeform-php
+    env_file: docker.env
     volumes:
       - $SSH_AUTH_SOCK:/tmp/agent.sock
       - ~/.composer:/home/.composer
