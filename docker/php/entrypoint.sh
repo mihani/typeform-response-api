@@ -40,6 +40,6 @@ if [[ $# -eq 0 ]]; then
 else
     disable_xdebug ${XDEBUG_CLI}
 
-    echo gosu ${user} "$@"
-    exec gosu ${user} "$@"
+    echo su-exec ${user} "$@"
+    exec su-exec ${user} "$@"
 fi

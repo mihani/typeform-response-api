@@ -13,6 +13,7 @@ RUN apk add --update --no-cache \
         unzip \
         zip \
         oniguruma-dev \
+        su-exec \
         libzip-dev && \
     apk add --update --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
@@ -21,7 +22,6 @@ RUN apk add --update --no-cache \
     docker-php-ext-install intl zip mysqli pdo_mysql && \
     docker-php-ext-enable opcache apcu xdebug && \
     apk del .build-deps && \
-    apk add gosu --update --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ && \
     addgroup bar && \
     adduser -D -h /home -s /bin/bash -G bar foo
 
