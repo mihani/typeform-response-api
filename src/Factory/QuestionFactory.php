@@ -19,7 +19,7 @@ class QuestionFactory
     public static function create(DefinitionFieldDto $definitionFieldDto, Form $form): Question
     {
         $formatedAnwserRole = null;
-        if (isset(self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$definitionFieldDto->id])){
+        if (isset(self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$definitionFieldDto->id])) {
             $formatedAnwserRole = self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$definitionFieldDto->id];
         }
 
@@ -47,7 +47,7 @@ class QuestionFactory
     public static function updateFormatedAnwserRole(Question $question): Question
     {
         $formatedAnwserRole = null;
-        if (isset(self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$question->getTypeformId()])){
+        if (isset(self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$question->getTypeformId()])) {
             $formatedAnwserRole = self::MAPPING_QUESTION_ROLE_TYPEFORM_ID[$question->getTypeformId()];
         }
 

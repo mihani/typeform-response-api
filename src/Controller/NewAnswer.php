@@ -50,7 +50,7 @@ class NewAnswer
                 $this->em->persist($question);
             }
 
-            if (!$question->getFormatedAnswerRole()){
+            if (!$question->getFormatedAnswerRole()) {
                 $question = QuestionFactory::updateFormatedAnwserRole($question);
             }
 

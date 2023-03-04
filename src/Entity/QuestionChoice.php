@@ -11,6 +11,7 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
  * @author Maud Remoriquet <maud.remoriquet@gmail.com>
  *
  * @ORM\Entity
+ *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=false)
  */
 class QuestionChoice
@@ -20,8 +21,11 @@ class QuestionChoice
 
     /**
      * @ORM\Column(type="uuid", unique=true)
+     *
      * @ORM\Id
+     *
      * @ORM\GeneratedValue(strategy="CUSTOM")
+     *
      * @ORM\CustomIdGenerator("doctrine.uuid_generator")
      */
     private string $id;
@@ -33,6 +37,7 @@ class QuestionChoice
 
     /**
      * @ORM\ManyToOne(targetEntity="Question", inversedBy="questionChoices")
+     *
      * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
     private Question $question;

@@ -35,6 +35,7 @@ class FormatedAnswerFactory
                 $groupByToken = $answer->getGroupByToken();
 
                 $formatedAnswers[$groupByToken]['receivedAt'] = $answer->getCreatedAt();
+
                 switch ($answer->getQuestion()->getFormatedAnswerRole()) {
                     case Question::FORMATED_ANSWER_ROLE_COMPANY:
                         $formatedAnswers[$groupByToken][Question::FORMATED_ANSWER_ROLE_COMPANY] = $answer->getContent();
@@ -63,7 +64,7 @@ class FormatedAnswerFactory
                 }
             }
         }
-        
+
         if (empty($formatedAnswers)) {
             return null;
         }

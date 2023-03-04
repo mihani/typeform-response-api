@@ -6,7 +6,8 @@ $finder = PhpCsFixer\Finder::create()
     ->exclude('src/Migrations')
 ;
 
-return PhpCsFixer\Config::create()
+$config = new PhpCsFixer\Config();
+return $config
     ->setRules([
         '@Symfony' => true,
         '@PSR2' => true,
