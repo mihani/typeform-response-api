@@ -35,7 +35,6 @@ class FormatedAnswerSubscriber implements EventSubscriberInterface
         );
 
         $formatedAnswers = FormatedAnswerFactory::createFromAnswers($answers);
-
         foreach ($formatedAnswers as $formatedAnswer) {
             $this->entityManager->persist($formatedAnswer);
             $this->entityManager->flush();

@@ -11,6 +11,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  * @author mihani <maud.remoriquet@gmail.com>
  *
  * @ORM\Entity(repositoryClass="App\Repository\AnswerRespository")
+ *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=false)
  */
 class Answer
@@ -19,9 +20,13 @@ class Answer
     use SoftDeleteableEntity;
 
     /**
-     * @ORM\Column(type="string", name="id")
+     * @ORM\Column(type="uuid", unique=true)
+     *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="UUID")
+     *
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     *
+     * @ORM\CustomIdGenerator("doctrine.uuid_generator")
      */
     private string $id;
 
@@ -39,6 +44,7 @@ class Answer
 
     /**
      * @ORM\ManyToOne(targetEntity="Question", inversedBy="anwsers")
+     *
      * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
     private Question $question;

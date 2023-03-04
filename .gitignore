@@ -4,6 +4,7 @@
 /.env.local
 /.env.local.php
 /.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /var/
 /vendor/
@@ -14,16 +15,14 @@
 ###< lexik/jwt-authentication-bundle ###
 
 ###> friendsofphp/php-cs-fixer ###
-/.php_cs
-/.php_cs.cache
+.php-cs-fixer.cache
 ###< friendsofphp/php-cs-fixer ###
-
-###> symfony/phpunit-bridge ###
-.phpunit
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
 
 ###> infection/infection ###
 infection.log
 ###< infection/infection ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###

@@ -1,12 +1,6 @@
 name: Main CI
 on:
-  push:
-    branches:
-      - 'feature/*'
-      - 'feat/*'
-      - 'fix/*'
-      - 'update/*'
-      - develop
+   [pull_request]
 
 jobs:
   quality-ci:

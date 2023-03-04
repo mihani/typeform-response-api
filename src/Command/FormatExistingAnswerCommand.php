@@ -17,10 +17,10 @@ class FormatExistingAnswerCommand extends Command
 
     private EntityManagerInterface $entityManager;
 
-    public function __construct(string $name = null, EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        parent::__construct($name);
         $this->entityManager = $entityManager;
+        parent::__construct();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

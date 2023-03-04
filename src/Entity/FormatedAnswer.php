@@ -11,6 +11,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  * @author mihani <maud.remoriquet@gmail.com>
  *
  * @ORM\Entity
+ *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=false)
  */
 class FormatedAnswer
@@ -19,9 +20,13 @@ class FormatedAnswer
     use SoftDeleteableEntity;
 
     /**
-     * @ORM\Column(type="integer", name="id")
+     * @ORM\Column(type="uuid", unique=true)
+     *
      * @ORM\Id
-     * @ORM\GeneratedValue
+     *
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     *
+     * @ORM\CustomIdGenerator("doctrine.uuid_generator")
      */
     private string $id;
 

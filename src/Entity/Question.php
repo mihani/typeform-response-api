@@ -14,6 +14,7 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
  * @author Maud Remoriquet <maud.remoriquet@gmail.com>
  *
  * @ORM\Entity
+ *
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=false)
  */
 class Question
@@ -35,9 +36,13 @@ class Question
     public const FORMATED_ANSWER_ROLE_COOPTATION = 'cooptation';
 
     /**
-     * @ORM\Column(type="string", name="id")
+     * @ORM\Column(type="uuid", unique=true)
+     *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="UUID")
+     *
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     *
+     * @ORM\CustomIdGenerator("doctrine.uuid_generator")
      */
     private string $id;
 
@@ -48,6 +53,7 @@ class Question
 
     /**
      * @ORM\ManyToOne(targetEntity="Form", inversedBy="questions")
+     *
      * @ORM\JoinColumn(name="form_id", referencedColumnName="id")
      */
     private Form $form;

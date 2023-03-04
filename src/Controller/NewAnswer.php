@@ -50,6 +50,10 @@ class NewAnswer
                 $this->em->persist($question);
             }
 
+            if (!$question->getFormatedAnswerRole()) {
+                $question = QuestionFactory::updateFormatedAnwserRole($question);
+            }
+
             $formQuestions[$field->id] = $question;
         }
 
