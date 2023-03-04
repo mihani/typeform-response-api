@@ -35,9 +35,10 @@ class Question
     public const FORMATED_ANSWER_ROLE_COOPTATION = 'cooptation';
 
     /**
-     * @ORM\Column(type="string", name="id")
+     * @ORM\Column(type="uuid", unique=true)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator("doctrine.uuid_generator")
      */
     private string $id;
 

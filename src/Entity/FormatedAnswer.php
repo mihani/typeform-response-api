@@ -19,9 +19,10 @@ class FormatedAnswer
     use SoftDeleteableEntity;
 
     /**
-     * @ORM\Column(type="integer", name="id")
+     * @ORM\Column(type="uuid", unique=true)
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator("doctrine.uuid_generator")
      */
     private string $id;
 
