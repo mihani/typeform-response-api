@@ -1,12 +1,13 @@
-DOCKER_COMPOSE = docker-compose
+DC = docker compose
 
 ##
 ## Env Dev
 ##--------
 install:
 	touch docker/data/history
-	cp .env .env.local
-	$(DOCKER_COMPOSE) up -d
+	cp -n .env .env.local
+	$(DC) down --remove-orphans
+	$(DC) up --build -d
 
 .PHONY : clean
 
@@ -14,7 +15,7 @@ install:
 ## Quality assurance
 ## -----------------
 phpcs-fixer:
-	$(DOCKER_COMPOSE) exec php vendor/bin/php-cs-fixer fix --verbose
+	$(DC) exec php vendor/bin/php-cs-fixer fix --verbose
 
 .PHONY : clean
 
@@ -22,9 +23,9 @@ phpcs-fixer:
 ## Env Test
 ## ---------
 install-test:
-	cp .env.test .env.test.local
+	cp -n .env.test .env.test.local
 
 phpunit:
-	$(DOCKER_COMPOSE) exec php bin/phpunit
+	$(DC) exec php bin/phpunit
 
 .PHONY : clean

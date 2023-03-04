@@ -1,6 +1,5 @@
 FROM php:8.1-fpm-alpine
 
-ARG APCU_VERSION=5.1.19
 ARG XDEBUG_VERSION=3.1.5
 ARG COMPOSER_VERSION=2.2.5
 
@@ -20,7 +19,7 @@ RUN apk add --update --no-cache \
         icu-dev && \
     pecl install xdebug-${XDEBUG_VERSION} && \
     docker-php-ext-install intl zip mysqli pdo_mysql && \
-    docker-php-ext-enable opcache xdebug && \
+    docker-php-ext-enable xdebug && \
     apk del .build-deps && \
     addgroup bar && \
     adduser -D -h /home -s /bin/bash -G bar foo
@@ -30,6 +29,7 @@ RUN curl -sS https://getcomposer.org/installer \
         | php -- --filename=composer --install-dir=/usr/local/bin --version=${COMPOSER_VERSION}
 
 ADD entrypoint.sh /entrypoint
+
 COPY config/php.ini /usr/local/etc/php/php.ini
 COPY config/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
