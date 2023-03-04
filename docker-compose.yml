@@ -3,26 +3,32 @@ services:
 
   mysql:
     image: mysql:8.0
-    env_file: docker.env
+    container_name: typeform-mysql
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=jobcontact
+      - MYSQL_ROOT_PASSWORD=jobcontact
+      - MYSQL_USER=jobcontact
+      - MYSQL_PASSWORD=jobcontact
     volumes:
       - mysql:/var/lib/mysql
       - ./docker/data:/docker/data
-      - ./docker/mysql:/etc/mysql/conf.d
 
   php:
     build: ./docker/php
     env_file: docker.env
+    container_name: typeform-php
     volumes:
       - $SSH_AUTH_SOCK:/tmp/agent.sock
       - ~/.composer:/home/.composer
       - ./docker/config/bashrc:/home/.bashrc
       - ./docker/config/bash_aliases:/home/.bash_aliases
-      - ./docker/config/inputrc:/home/.inputrc
       - ./docker/data/history:/home/.bash_history
       - ./:/srv/
 
   nginx:
     image: nginx:1.15.9-alpine
+    container_name: typeform-nginx
     expose:
       - 443
     depends_on:

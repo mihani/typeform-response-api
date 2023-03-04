@@ -1,8 +1,8 @@
 FROM php:7.4.11-fpm-alpine
 
-ENV APCU_VERSION 5.1.19
-ENV XDEBUG_VERSION 3.0.2
-ENV COMPOSER_VERSION 2.0.8
+ARG APCU_VERSION=5.1.19
+ARG XDEBUG_VERSION=3.1.5
+ARG COMPOSER_VERSION=2.0.8
 
 RUN apk add --update --no-cache \
         bash \
@@ -31,7 +31,7 @@ RUN curl -sS https://getcomposer.org/installer \
 
 ADD entrypoint.sh /entrypoint
 COPY config/php.ini /usr/local/etc/php/php.ini
-COPY config/xdebug.ini /usr/local/etc/php/conf.d/debug.ini
+COPY config/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 WORKDIR /srv
 

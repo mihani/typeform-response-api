@@ -21,8 +21,6 @@ disable_xdebug() {
 
 if [[ ${uid} == 0 ]] && [[ ${gid} == 0 ]]; then
     echo -e "${COLOR_ERROR}You should avoid using root on container${COLOR_NO}"
-
-    exit 1
 fi
 
 sed -i -r "s/foo:x:\d+:\d+:/foo:x:$uid:$gid:/g" /etc/passwd
